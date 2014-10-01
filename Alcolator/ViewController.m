@@ -64,7 +64,7 @@
     if (numberOfWineGlassesForEquivalentAlcoholAmount == 1) {
         wineText = NSLocalizedString(@"glass", @"singular glass");
     } else {
-        wineText = NSLocalizedString(@"glasses", @"plural of glass");
+        wineText = NSLocalizedString(@"glasses", @"plural of glass"); 
     }
     
     // generate the result text, and display it on the label
