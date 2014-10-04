@@ -14,7 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *resultLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numberOfBeerLabel;
 
-@property (nonatomic, weak) NSString *beerAndWine;
+//@property (nonatomic, strong) NSString *beerAndWine;
 
 @end
 
@@ -69,10 +69,10 @@
     
     // generate the result text, and display it on the label
     
-    NSString *resultText = [NSString stringWithFormat:NSLocalizedString(@"%d %@ contains as much alcohol as %.1f %@ of wine.", nil), numberOfBeers, beerText, numberOfWineGlassesForEquivalentAlcoholAmount, wineText];
+    return [NSString stringWithFormat:NSLocalizedString(@"%d %@ contains as much alcohol as %.1f %@ of wine.", nil), numberOfBeers, beerText, numberOfWineGlassesForEquivalentAlcoholAmount, wineText];
     //self.resultLabel.text = resultText;
-    self.beerAndWine = resultText;
-    return self.beerAndWine;
+    //self.beerAndWine = resultText;
+    //return self.beerAndWine;
 }
 
 - (IBAction)textFieldDidChange:(UITextField *)sender {
@@ -83,7 +83,7 @@
     
     if (enteredNumber == 0) {
         // The user typed 0, or something that's not a number, so clear the field
-        sender.text = nil;
+        sender.text = [NSString string];
     }
 }
 
@@ -97,8 +97,7 @@
     NSString *numberOfBeersAbused = [NSString stringWithFormat:NSLocalizedString(@"Number of beers abused: %d", nil), numberOfBeers];
     self.numberOfBeerLabel.text = numberOfBeersAbused;
     
-    NSString *copyBeerAndWine = [NSString stringWithFormat:NSLocalizedString(@"%@", nil), self.beerAndWine];
-    self.resultLabel.text = copyBeerAndWine;
+    self.resultLabel.text = [self calculateBeerAndWine]; // <-- methods on self
     
 }
 
@@ -147,7 +146,7 @@
     self.resultLabel.text = resultText;
     **/
     
-    self.resultLabel.text = self.beerAndWine;
+    self.resultLabel.text = [self calculateBeerAndWine];
 }
 
 - (IBAction)tapGestureDidFire:(UITapGestureRecognizer *)sender {
