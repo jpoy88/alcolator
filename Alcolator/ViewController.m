@@ -31,7 +31,7 @@
 }
 
 - (NSString *) calculateBeerAndWine {
-    
+     
     // first, calculate how much alcohol is in all those beers...
     
     int numberOfBeers = self.beerCountSlider.value;
